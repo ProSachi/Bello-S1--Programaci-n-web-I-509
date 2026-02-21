@@ -1,0 +1,1063 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Web I</title>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="icon" href="https://www.cesde.edu.co/wp-content/uploads/2022/11/cropped-favicon-32x32.png" sizes="32x32">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Montserrat', 'sans-serif'],
+                    },
+                    colors: {
+                        cesde: {
+                            primary: '#D60057', // Magenta Institucional
+                            dark: '#1a1a1a',
+                            sidebar: '#000000',
+                            light: '#f3f4f6'
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        /* Ajustes finos para scrollbar y código */
+        body {
+            -webkit-font-smoothing: antialiased;
+        }
+
+        pre {
+            scrollbar-width: thin;
+            scrollbar-color: #555 #1e1e1e;
+        }
+
+        /* Sistema de sidebar para desktop */
+        @media (min-width: 768px) {
+            #sidebar.sidebar-hidden {
+                transform: translateX(-100%) !important;
+            }
+
+            #sidebar.sidebar-visible {
+                transform: translateX(0) !important;
+            }
+
+            #toggle-sidebar-btn {
+                transition: left 0.3s ease-in-out;
+            }
+
+            #toggle-sidebar-btn.btn-with-sidebar {
+                left: 18rem;
+                /* 72 * 4px = 288px = 18rem */
+            }
+
+            #toggle-sidebar-btn.btn-without-sidebar {
+                left: 1rem;
+            }
+
+            /* Contenedor de contenido ampliado */
+            .content-container.expanded {
+                max-width: 90% !important;
+            }
+
+            .content-container.normal {
+                max-width: 56rem;
+                /* max-w-4xl = 896px */
+            }
+        }
+    </style>
+</head>
+
+<body class="bg-gray-50 text-gray-700 h-screen flex flex-col md:flex-row overflow-hidden">
+
+    <header class="md:hidden bg-black text-white p-4 flex justify-between items-center z-50 shadow-md">
+        <div class="font-bold tracking-wider text-lg">WEB DEV I</div>
+        <button id="menu-btn" class="focus:outline-none text-cesde-primary">
+            <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path>
+            </svg>
+        </button>
+    </header>
+
+    <aside id="sidebar"
+        class="bg-cesde-sidebar text-gray-400 w-72 flex-shrink-0 fixed inset-y-0 left-0 transform -translate-x-full md:translate-x-0 transition-transform duration-300 ease-in-out z-40 border-r border-gray-800 flex flex-col h-full sidebar-visible">
+
+        <div class="p-6 text-center border-b border-gray-800">
+            <img src="src/logo.png" alt="CESDE Logo"
+                class="w-32 mx-auto h-auto opacity-90 hover:opacity-100 transition-opacity">
+        </div>
+
+        <nav class="flex-1 overflow-y-auto py-4">
+            <ul class="space-y-1">
+                <li>
+                    <a href="index.html"
+                        class="block py-2 px-6 hover:bg-gray-900 hover:text-white border-l-4 border-transparent transition-colors text-sm">
+                        Recurso Global
+                    </a>
+                </li>
+
+                <li>
+                    <a href="semana1.html"
+                        class="block py-2 px-6 hover:bg-gray-900 hover:text-white border-l-4 border-transparent transition-colors text-sm">
+                        Semana 1: Fundamentos
+                    </a>
+                </li>
+                <li>
+                    <a href="semana2.html"
+                        class="block py-2 px-6 hover:bg-gray-900 hover:text-white border-l-4 border-transparent transition-colors text-sm">
+                        Semana 2: Condicionales
+                    </a>
+                </li>
+                <li>
+                    <a href="semana3.html"
+                        class="block py-2 px-6 hover:bg-gray-900 hover:text-white border-l-4 border-transparent transition-colors text-sm">
+                        Semana 3: Ciclos
+                    </a>
+                </li>
+                <li>
+                    <a href="semana4.html"
+                        class="block py-2 px-6 bg-gray-900 border-l-4 border-cesde-primary text-white font-medium text-sm">
+                        Semana 4: Funciones
+                    </a>
+                </li>
+                <li>
+                    <a href="proximamente.html"
+                        class="block py-2 px-6 hover:bg-gray-900 hover:text-white border-l-4 border-transparent transition-colors text-sm">
+                        Semana 5: Funciones
+                    </a>
+                </li>
+                <li>
+                    <a href="proximamente.html"
+                        class="block py-2 px-6 hover:bg-gray-900 hover:text-white border-l-4 border-transparent transition-colors text-sm">
+                        Semana 6: Momento 1
+                    </a>
+                </li>
+                <li>
+                    <a href="proximamente.html"
+                        class="block py-2 px-6 hover:bg-gray-900 hover:text-white border-l-4 border-transparent transition-colors text-sm">
+                        Semana 7: Estructuras de datos
+                    </a>
+                </li>
+                <li>
+                    <a href="proximamente.html"
+                        class="block py-2 px-6 hover:bg-gray-900 hover:text-white border-l-4 border-transparent transition-colors text-sm">
+                        Semana 8: Estructuras de datos
+                    </a>
+                </li>
+                <li>
+                    <a href="proximamente.html"
+                        class="block py-2 px-6 hover:bg-gray-900 hover:text-white border-l-4 border-transparent transition-colors text-sm">
+                        Semana 9: Manipulación DOM
+                    </a>
+                </li>
+                <li>
+                    <a href="proximamente.html"
+                        class="block py-2 px-6 hover:bg-gray-900 hover:text-white border-l-4 border-transparent transition-colors text-sm">
+                        Semana 10: Manipulación DOM
+                    </a>
+                </li>
+                <li>
+                    <a href="proximamente.html"
+                        class="block py-2 px-6 hover:bg-gray-900 hover:text-white border-l-4 border-transparent transition-colors text-sm">
+                        Semana 11: Manipulación DOM
+                    </a>
+                </li>
+                <li>
+                    <a href="proximamente.html"
+                        class="block py-2 px-6 hover:bg-gray-900 hover:text-white border-l-4 border-transparent transition-colors text-sm">
+                        Semana 12: Momento 2
+                    </a>
+                </li>
+                <li>
+                    <a href="proximamente.html"
+                        class="block py-2 px-6 hover:bg-gray-900 hover:text-white border-l-4 border-transparent transition-colors text-sm">
+                        Semana 13: Asíncrono
+                    </a>
+                </li>
+                <li>
+                    <a href="proximamente.html"
+                        class="block py-2 px-6 hover:bg-gray-900 hover:text-white border-l-4 border-transparent transition-colors text-sm">
+                        Semana 13: Asíncrono
+                    </a>
+                </li>
+                <li>
+                    <a href="proximamente.html"
+                        class="block py-2 px-6 hover:bg-gray-900 hover:text-white border-l-4 border-transparent transition-colors text-sm">
+                        Semana 14: Asíncrono
+                    </a>
+                </li>
+                <li>
+                    <a href="proximamente.html"
+                        class="block py-2 px-6 hover:bg-gray-900 hover:text-white border-l-4 border-transparent transition-colors text-sm">
+                        Semana 15: Asíncrono
+                    </a>
+                </li>
+                <li>
+                    <a href="proximamente.html"
+                        class="block py-2 px-6 hover:bg-gray-900 hover:text-white border-l-4 border-transparent transition-colors text-sm">
+                        Semana 16: Asíncrono
+                    </a>
+                </li>
+                <li>
+                    <a href="proximamente.html"
+                        class="block py-2 px-6 hover:bg-gray-900 hover:text-white border-l-4 border-transparent transition-colors text-sm">
+                        Semana 17: Momento 3
+                    </a>
+                </li>
+                <li>
+                    <a href="proximamente.html"
+                        class="block py-2 px-6 hover:bg-gray-900 hover:text-white border-l-4 border-transparent transition-colors text-sm">
+                        Semana 18: Retroalimentación
+                    </a>
+                </li>
+            </ul>
+        </nav>
+
+        <div class="p-4 border-t border-gray-800 text-xs text-center text-gray-600">
+            v1.0.2 - 2026
+        </div>
+    </aside>
+
+    <div id="overlay" class="fixed inset-0 bg-black bg-opacity-50 z-30 hidden md:hidden"></div>
+
+    <!-- Botón para ocultar/mostrar sidebar en desktop -->
+    <button id="toggle-sidebar-btn"
+        class="hidden md:block fixed top-4 z-50 bg-cesde-primary text-white p-3 rounded-lg shadow-lg hover:bg-pink-700 focus:outline-none focus:ring-2 focus:ring-cesde-primary focus:ring-offset-2 btn-with-sidebar">
+        <svg id="menu-icon" class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 19l-7-7 7-7m8 14l-7-7 7-7">
+            </path>
+        </svg>
+    </button>
+
+    <main id="main-content" class="flex-1 overflow-y-auto w-full relative transition-all duration-300">
+        <div id="content-container"
+            class="content-container normal mx-auto p-6 md:p-10 pb-20 transition-all duration-300">
+
+            <div class="mb-8 border-b pb-4">
+                <small class="text-cesde-primary font-bold tracking-widest uppercase">Unidad I - Generalidades de
+                    Javascript</small>
+                <h1 class="text-3xl md:text-4xl font-bold text-gray-800 mt-2">Semana 4: Funciones</h1>
+                <p class="text-gray-500 mt-2">Temas: Funciones en JavaScript: Funciones regulares, Parámetros y Retorno
+                    de valores.</p>
+            </div>
+
+            <section
+                class="mb-8 bg-gradient-to-br from-blue-50 to-indigo-50 p-6 md:p-8 rounded-xl shadow-md border-l-4 border-blue-500 hover:shadow-lg transition-shadow duration-300">
+                <h2 class="text-2xl font-bold text-gray-800 mb-4">Situación - La Máquina Expendedora y la Fábrica</h2>
+
+                <p class="text-gray-700 mb-4">
+                    Imagina una fábrica de automóviles. Sería ilógico e ineficiente que un solo ingeniero construyera
+                    todo el auto desde el chasis hasta la pintura en una sola secuencia larga de trabajo. En su lugar,
+                    la fábrica se divide en "estaciones" o "módulos": una estación ensambla el motor, otra pinta la
+                    carrocería, otra coloca las llantas.
+                </p>
+
+                <p class="text-gray-700 mb-4">
+                    En la programación, cuando escribimos todo el código de arriba hacia abajo en un solo bloque,
+                    creamos un script frágil y difícil de mantener (conocido como <strong>código espagueti</strong>).
+                </p>
+
+                <p class="text-gray-700 mb-4">
+                    Una función es como una de esas estaciones de la fábrica, o más simplemente, como una
+                    <strong>máquina expendedora</strong>:
+                </p>
+
+                <ol class="list-decimal list-inside text-gray-700 mb-4 space-y-2 ml-4">
+                    <li>Le insertas monedas y un código (los <strong>parámetros</strong>).</li>
+                    <li>La máquina procesa internamente la solicitud (el <strong>cuerpo de la función</strong>).</li>
+                    <li>La máquina te entrega una lata de refresco (el <strong>retorno</strong>).</li>
+                </ol>
+
+                <p class="text-gray-700">
+                    Las funciones nos permiten aplicar el principio <strong>DRY</strong> (<em>Don't Repeat Yourself</em>
+                    - No te repitas). Escribimos la lógica una vez, la empaquetamos en una función y la reutilizamos
+                    cientos de veces.
+                </p>
+            </section>
+
+            <section class="mb-12">
+                <h2 class="text-2xl font-bold text-gray-800 mb-4 border-l-4 border-cesde-primary pl-4">¿Qué son las
+                    Funciones?</h2>
+                <div
+                    class="mb-8 bg-gradient-to-br from-purple-50 to-pink-50 p-6 md:p-8 rounded-xl shadow-md border-l-4 border-cesde-primary hover:shadow-lg transition-shadow duration-300">
+
+
+                    <p class="text-gray-700 mb-6">
+                        Una función en JavaScript es un <strong>"bloque de código"</strong> que agrupa una serie de
+                        instrucciones para realizar una tarea específica. Le das un nombre, y cada vez que quieres que
+                        la tarea se ejecute, simplemente "llamas" a la función por su nombre.
+                    </p>
+
+                    <h3 class="text-xl font-semibold text-gray-800 mb-3">¿Por qué usamos funciones?</h3>
+
+                    <ul class="list-disc list-inside text-gray-700 mb-6 space-y-3 ml-4">
+                        <li>
+                            <strong>Reutilización de Código:</strong> Evitas repetir el mismo código una y otra vez.
+                            Escribes la lógica una vez y la usas cuantas veces sea necesario. ¡Menos código, menos
+                            errores!
+                        </li>
+                        <li>
+                            <strong>Modularidad:</strong> Divides tu programa grande en piezas más pequeñas y manejables
+                            (nuestras "mini-máquinas"). Cada pieza se encarga de una tarea específica, lo que facilita
+                            entender, probar y mantener tu código.
+                        </li>
+                        <li>
+                            <strong>Legibilidad:</strong> Un programa con funciones bien definidas es más fácil de leer
+                            y entender, tanto para ti como para otros desarrolladores. Los nombres de las funciones nos
+                            dicen qué hacen.
+                        </li>
+                    </ul>
+
+                    <h3 class="text-xl font-semibold text-gray-800 mb-3">Declaración y Llamada de Funciones</h3>
+
+                    <p class="text-gray-700 mb-4">
+                        Para crear nuestra función necesitamos <strong>declararla</strong>, con un nombre. Luego, para
+                        "ejecutarla", necesitamos <strong>llamar</strong> o <strong>invocar</strong> la función.
+                    </p>
+
+                    <h4 class="text-lg font-semibold text-gray-800 mb-2">Sintaxis Básica de Declaración (Función
+                        Regular):</h4>
+
+                    <pre class="bg-gray-900 text-gray-100 p-4 rounded-lg overflow-x-auto mb-4"><code>function saludar() { // Abre la función 
+    // Aquí va el "cuerpo" de la función: las instrucciones que realizará 
+    console.log("¡Hola, mundo!"); 
+    console.log("¡Bienvenido a JavaScript!"); 
+} // Cierra la función</code></pre>
+
+                    <p class="text-gray-700 mb-2">
+                        <strong>Palabra reservada:</strong> <code
+                            class="bg-gray-200 px-2 py-1 rounded text-sm">function</code>
+                    </p>
+                    <p class="text-gray-700 mb-4">
+                        <strong>Nombre:</strong> Sigue las mismas reglas que las variables (camelCase, descriptivo, a
+                        menudo usando verbos como <code class="bg-gray-200 px-2 py-1 rounded text-sm">calcular</code>,
+                        <code class="bg-gray-200 px-2 py-1 rounded text-sm">mostrar</code>, <code
+                            class="bg-gray-200 px-2 py-1 rounded text-sm">validar</code>).
+                    </p>
+
+                    <h4 class="text-lg font-semibold text-gray-800 mb-2">Llamada o Invocación de una Función:</h4>
+
+                    <p class="text-gray-700 mb-4">
+                        Para que la función haga su trabajo, tenemos que "llamarla" o "invocarla". Esto se hace
+                        simplemente escribiendo su nombre seguido de paréntesis <code
+                            class="bg-gray-200 px-2 py-1 rounded text-sm">()</code>.
+                    </p>
+
+                    <pre class="bg-gray-900 text-gray-100 p-4 rounded-lg overflow-x-auto mb-6"><code>function saludar() { 
+    console.log("¡Hola, mundo!"); 
+    console.log("¡Bienvenido/a a JavaScript!"); 
+}
+
+saludar();</code></pre>
+
+                    <h3 class="text-xl font-semibold text-gray-800 mb-3">Hoisting de Funciones</h3>
+
+                    <p class="text-gray-700 mb-8">
+                        Una particularidad de las declaraciones de función es el <strong>hoisting</strong>. Esto
+                        significa que JavaScript "eleva" la declaración de la función al principio de su ámbito antes de
+                        ejecutar el código. Por lo tanto, puedes llamar a una función declarada con <code
+                            class="bg-gray-200 px-2 py-1 rounded text-sm">function</code> antes de que su definición
+                        aparezca en el código.
+                    </p>
+
+                    <h3 class="text-xl font-semibold text-gray-800 mb-3">Parámetros y Argumentos (Entradas)</h3>
+
+                    <p class="text-gray-700 mb-4">
+                        Una función que solo hace una cosa (como saludar siempre igual) no es muy útil. Necesitamos que
+                        sea flexible. Para eso, le pasamos "ingredientes".
+                    </p>
+
+                    <ul class="list-disc list-inside text-gray-700 mb-6 space-y-2 ml-4">
+                        <li>
+                            <strong>Parámetros:</strong> Son las "variables placeholder" que defines en la receta. Son
+                            los nombres de los ingredientes que la función espera recibir.
+                        </li>
+                        <li>
+                            <strong>Argumentos:</strong> Son los valores reales que le pasas a la función cuando la
+                            invocas.
+                        </li>
+                    </ul>
+
+                    <h4 class="text-lg font-semibold text-gray-800 mb-2">Parámetros</h4>
+
+                    <p class="text-gray-700 mb-4">
+                        Los parámetros son variables especiales que se declaran en los paréntesis de la función. Actúan
+                        como marcadores de posición para los valores que la función necesita recibir cuando es llamada.
+                    </p>
+
+                    <p class="text-gray-700 mb-4">
+                        Cuando llamas a la función, le pasas <strong>argumentos</strong>. Los argumentos son los valores
+                        reales que se asignan a los parámetros.
+                    </p>
+
+                    <pre class="bg-gray-900 text-gray-100 p-4 rounded-lg overflow-x-auto mb-6"><code>function presentarPersona(nombre, edad) {
+    console.log(`Hola, mi nombre es ${nombre} y tengo ${edad} años.`); 
+}
+
+presentarPersona("Alicia", 25); 
+presentarPersona("Roberto", 35);</code></pre>
+
+                    <h4 class="text-lg font-semibold text-gray-800 mb-2">Parámetros por Defecto</h4>
+
+                    <p class="text-gray-700 mb-4">
+                        A veces, queremos que un parámetro tenga un valor predefinido si no se proporciona un argumento
+                        al llamar a la función. Esto se logra con los <strong>parámetros por defecto</strong>.
+                    </p>
+
+                    <pre class="bg-gray-900 text-gray-100 p-4 rounded-lg overflow-x-auto mb-4"><code>function saludarPersonalizado(nombre = "Invitado") { // 'Invitado' es el valor por defecto
+    console.log(`¡Hola, ${nombre}!`);
+}
+
+saludarPersonalizado("María"); // Salida: ¡Hola, María!
+saludarPersonalizado();        // Salida: ¡Hola, Invitado! (no se pasó argumento, usa el defecto)</code></pre>
+
+                    <h4 class="text-lg font-semibold text-gray-800 mb-2 mt-6">Retornar Múltiples Valores
+                        (indirectamente)</h4>
+
+                    <p class="text-gray-700 mb-4">
+                        Una función solo puede devolver un valor. Sin embargo, si necesitas devolver varias piezas de
+                        información, puedes encapsularlas en un <strong>objeto</strong> o un <strong>array</strong>.
+                    </p>
+
+                    <pre class="bg-gray-900 text-gray-100 p-4 rounded-lg overflow-x-auto mb-6"><code>function calcularOperaciones(a, b) {
+    let suma = a + b;
+    let resta = a - b;
+    let multiplicacion = a * b;
+
+    return {
+        suma: suma,
+        resta: resta,
+        multiplicacion: multiplicacion
+    };
+}
+
+let resultados = calcularOperaciones(10, 5);
+console.log("Suma:", resultados.suma);               // 15
+console.log("Resta:", resultados.resta);             // 5
+console.log("Multiplicación:", resultados.multiplicacion); // 50</code></pre>
+
+                    <h3 class="text-xl font-semibold text-gray-800 mb-3 mt-8">Ámbito (Scope) Básico de Funciones</h3>
+
+                    <p class="text-gray-700 mb-4">
+                        <strong>Variables Locales:</strong> Las variables declaradas dentro de una función solo existen
+                        y son accesibles dentro de esa función. Son "locales" a esa función y no pueden ser vistas desde
+                        fuera.
+                    </p>
+
+                    <div class="bg-blue-100 border-l-4 border-blue-500 p-4 mb-4 rounded">
+                        <p class="text-gray-800 font-semibold">El "Scope" o Ámbito es el "contexto" donde viven las
+                            variables.</p>
+                        <p class="text-gray-700 mt-2"><strong>Regla de "Las Vegas":</strong> Lo que se declara dentro de
+                            una función, se queda dentro de la función.</p>
+                    </div>
+
+                    <p class="text-gray-700 mb-4">
+                        <strong>Acceso a Variables Globales:</strong> Las funciones pueden acceder a variables
+                        declaradas fuera de ellas (variables globales), pero no es una buena práctica depender demasiado
+                        de esto, ya que puede hacer el código más difícil de rastrear y probar.
+                    </p>
+
+                    <pre class="bg-gray-900 text-gray-100 p-4 rounded-lg overflow-x-auto mb-4"><code>let variableGlobal = "Soy global"; 
+
+function miFuncion() { 
+    let variableLocal = "Soy local, solo existo aquí dentro."; 
+    console.log(variableGlobal); // Sí puedo ver la variable global 
+    console.log(variableLocal); 
+}
+
+miFuncion(); 
+// Muestra: 
+// Soy global 
+// Soy local, solo existo aquí dentro. 
+
+console.log(variableGlobal); // Muestra: Soy global
+// console.log(variableLocal); // ❌ ERROR: variableLocal no está definida aquí fuera</code></pre>
+
+                </div>
+            </section>
+
+            <section
+                class="mb-8 bg-gradient-to-br from-green-50 to-teal-50 p-6 md:p-8 rounded-xl shadow-md border-l-4 border-green-500 hover:shadow-lg transition-shadow duration-300">
+                <h2 class="text-2xl font-bold text-gray-800 mb-6">Preguntas Frecuentes</h2>
+
+                <div class="space-y-6">
+                    <div class="bg-white p-5 rounded-lg shadow-sm">
+                        <h3 class="text-lg font-semibold text-gray-800 mb-3">
+                            ¿Cuál es la diferencia exacta entre un parámetro y un argumento?
+                        </h3>
+                        <p class="text-gray-700">
+                            El <strong>parámetro</strong> es el "molde" o la variable vacía que pones cuando construyes
+                            la función (ej. <code
+                                class="bg-gray-200 px-2 py-1 rounded text-sm">function calcular(precio)</code>). El
+                            <strong>argumento</strong> es el dato real que envías cuando la usas (ej. <code
+                                class="bg-gray-200 px-2 py-1 rounded text-sm">calcular(100)</code>). El parámetro es la
+                            teoría, el argumento es la práctica.
+                        </p>
+                    </div>
+
+                    <div class="bg-white p-5 rounded-lg shadow-sm">
+                        <h3 class="text-lg font-semibold text-gray-800 mb-3">
+                            ¿Puede una función devolver (return) múltiples valores al mismo tiempo?
+                        </h3>
+                        <p class="text-gray-700">
+                            Estrictamente, una función solo puede ejecutar un único <code
+                                class="bg-gray-200 px-2 py-1 rounded text-sm">return</code> y devolver un solo elemento.
+                            Sin embargo, ese elemento único puede ser un <strong>Arreglo (Array)</strong> o un
+                            <strong>Objeto</strong> que contenga múltiples datos por dentro.
+                        </p>
+                    </div>
+                </div>
+            </section>
+
+            <section class="mb-8 bg-gradient-to-br from-amber-50 to-orange-50 p-6 md:p-8 rounded-xl shadow-md border-l-4 border-orange-500 hover:shadow-lg transition-shadow duration-300">
+                <h2 class="text-2xl font-bold text-gray-800 mb-6">Ejemplos Prácticos</h2>
+                
+                <div class="space-y-8">
+                    <!-- Ejemplo 1 -->
+                    <div>
+                        <h3 class="text-xl font-semibold text-gray-800 mb-3">
+                            Ejemplo 1: Función Simple (Sin Parámetros, Sin Retorno)
+                        </h3>
+                        <p class="text-gray-700 mb-4">
+                            Imprime un encabezado de texto.
+                        </p>
+                        <pre class="bg-gray-900 text-gray-100 p-4 rounded-lg overflow-x-auto"><code>function mostrarEncabezado() {
+    console.log("-----------------------");
+    console.log("   SISTEMA DE PAGOS    ");
+    console.log("-----------------------");
+}
+
+console.log("Texto 1");
+mostrarEncabezado();
+console.log("Texto 2");</code></pre>
+                    </div>
+
+                    <!-- Ejemplo 2 -->
+                    <div class="pt-6 border-t border-orange-200">
+                        <h3 class="text-xl font-semibold text-gray-800 mb-3">
+                            Ejemplo 2: Función con Parámetros (Sin Retorno)
+                        </h3>
+                        <pre class="bg-gray-900 text-gray-100 p-4 rounded-lg overflow-x-auto"><code>// Función para generar un correo corporativo
+
+function generarCorreo(nombre, apellido) {
+    // Normalizamos los datos 
+    let correo = `${nombre}.${apellido}@empresa.com`.toLowerCase();
+    console.log(`El correo generado es: ${correo}`);
+}
+
+generarCorreo("Santiago", "Yosa"); // santiago.yosa@empresa.com</code></pre>
+                    </div>
+
+                    <!-- Ejemplo 3 -->
+                    <div class="pt-6 border-t border-orange-200">
+                        <h3 class="text-xl font-semibold text-gray-800 mb-3">
+                            Ejemplo 3: Función Completa (Parámetros y Retorno)
+                        </h3>
+                        <pre class="bg-gray-900 text-gray-100 p-4 rounded-lg overflow-x-auto"><code>function aplicarImpuesto(precioBase) {
+    // 1. Validar el dato (siempre es buena práctica)
+    if (precioBase <= 0) {
+        return 0; // Salida temprana si el dato es inválido
+    }
+    
+    // 2. Procesar
+    const iva = precioBase * 0.19;
+    const precioFinal = precioBase + iva;
+    
+    // 3. Retornar
+    return precioFinal;
+}
+
+// Uso en el programa real
+let totalLaptop = aplicarImpuesto(1000);
+let totalMouse = aplicarImpuesto(50);
+
+// Ahora puedo usar esos valores retornados para otra operación
+let totalCarrito = totalLaptop + totalMouse;
+console.log(`Total a pagar: $${totalCarrito}`); // 1249.5</code></pre>
+                    </div>
+                </div>
+            </section>
+
+            <section class="mb-8 bg-gradient-to-br from-violet-50 to-purple-50 p-6 md:p-8 rounded-xl shadow-md border-l-4 border-violet-500 hover:shadow-lg transition-shadow duration-300">
+                <h2 class="text-2xl font-bold text-gray-800 mb-6">Práctica Acompañada - Learning by Doing</h2>
+                
+                <div class="space-y-8">
+                    <!-- Práctica A -->
+                    <div class="bg-white p-6 rounded-lg shadow-sm">
+                        <h3 class="text-xl font-semibold text-violet-700 mb-4">
+                            Calculadora de Descuentos
+                        </h3>
+                        <p class="text-gray-700 mb-4">
+                            Crear una función que reciba el precio de un artículo y el porcentaje de descuento a aplicar, y nos devuelva el valor final a pagar.
+                        </p>
+
+                        <h4 class="text-lg font-semibold text-gray-800 mb-3">Paso a paso:</h4>
+                        <ol class="list-decimal list-inside text-gray-700 mb-6 space-y-2 ml-4">
+                            <li>Declara una función llamada <code class="bg-gray-200 px-2 py-1 rounded text-sm">calcularDescuento</code>.</li>
+                            <li>Define dos parámetros entre los paréntesis: <code class="bg-gray-200 px-2 py-1 rounded text-sm">precio</code> y <code class="bg-gray-200 px-2 py-1 rounded text-sm">porcentaje</code>.</li>
+                            <li>Dentro de las llaves <code class="bg-gray-200 px-2 py-1 rounded text-sm">{}</code>, calcula el valor del descuento multiplicando el precio por <code class="bg-gray-200 px-2 py-1 rounded text-sm">(porcentaje / 100)</code>. Guarda esto en una variable <code class="bg-gray-200 px-2 py-1 rounded text-sm">valorDescontado</code>.</li>
+                            <li>Calcula el <code class="bg-gray-200 px-2 py-1 rounded text-sm">precioFinal</code> restando el <code class="bg-gray-200 px-2 py-1 rounded text-sm">valorDescontado</code> al precio original.</li>
+                            <li>Retorna el <code class="bg-gray-200 px-2 py-1 rounded text-sm">precioFinal</code> usando la palabra clave <code class="bg-gray-200 px-2 py-1 rounded text-sm">return</code>.</li>
+                            <li>Fuera de la función, invócala pasándole un precio de 500 y un descuento de 20. Guarda el resultado en una variable e imprímela.</li>
+                        </ol>
+
+                        <h4 class="text-lg font-semibold text-gray-800 mb-3">Solución</h4>
+                        <pre class="bg-gray-900 text-gray-100 p-4 rounded-lg overflow-x-auto"><code>// Declaración
+function calcularDescuento(precio, porcentaje) {
+    let valorDescontado = precio * (porcentaje / 100);
+    let precioFinal = precio - valorDescontado;
+    
+    return precioFinal;
+}
+
+// Invocación
+let pagoZapatos = calcularDescuento(500, 20);
+console.log(`Total a pagar por los zapatos con descuento: $${pagoZapatos}`); // 400</code></pre>
+                    </div>
+
+                    <!-- Práctica B -->
+                    <div class="bg-white p-6 rounded-lg shadow-sm border-t-4 border-violet-300">
+                        <h3 class="text-xl font-semibold text-violet-700 mb-4">
+                            Práctica B - Función: Conversor de Temperatura
+                        </h3>
+
+                        <h4 class="text-lg font-semibold text-gray-800 mb-3">Paso a paso:</h4>
+                        <ol class="list-decimal list-inside text-gray-700 mb-6 space-y-2 ml-4">
+                            <li><strong>Define la función:</strong> Escribe una función llamada <code class="bg-gray-200 px-2 py-1 rounded text-sm">convertirCelsiusAFahrenheit</code>.</li>
+                            <li><strong>Define el parámetro:</strong> La función debe aceptar un parámetro, llámalo <code class="bg-gray-200 px-2 py-1 rounded text-sm">tempCelsius</code>.</li>
+                            <li><strong>Implementa la lógica:</strong> Dentro de la función, usa la fórmula <code class="bg-gray-200 px-2 py-1 rounded text-sm">(C * 9/5) + 32</code> para calcular los grados Fahrenheit.</li>
+                            <li><strong>Retorna el valor:</strong> Usa <code class="bg-gray-200 px-2 py-1 rounded text-sm">return</code> para devolver el resultado del cálculo.</li>
+                            <li><strong>Prueba tu función:</strong> Llama a la función con diferentes valores y muéstralos en la consola.
+                                <ul class="list-disc list-inside ml-6 mt-2">
+                                    <li><code class="bg-gray-200 px-2 py-1 rounded text-sm">console.log(`25°C son ${convertirCelsiusAFahrenheit(25)}°F`);</code></li>
+                                    <li><code class="bg-gray-200 px-2 py-1 rounded text-sm">console.log(`0°C son ${convertirCelsiusAFahrenheit(0)}°F`);</code></li>
+                                </ul>
+                            </li>
+                        </ol>
+                    </div>
+                </div>
+            </section>
+
+            <section class="mb-8 bg-gradient-to-br from-cyan-50 to-blue-50 p-6 md:p-8 rounded-xl shadow-md border-l-4 border-cyan-500 hover:shadow-lg transition-shadow duration-300">
+                <h2 class="text-2xl font-bold text-gray-800 mb-6">Modularización</h2>
+                
+                <p class="text-gray-700 mb-6">
+                    Podemos realizar una separación de responsabilidades a nivel <strong>lógico</strong> o <strong>físico</strong>. Hay cuatro pilares innegociables que debes tener en cuenta y transmitir al estructurar software modular:
+                </p>
+
+                <!-- Pilar 1 -->
+                <div class="bg-white p-5 rounded-lg shadow-sm mb-6">
+                    <h3 class="text-xl font-semibold text-cyan-700 mb-3">
+                        1️⃣ El Principio de Responsabilidad Única
+                    </h3>
+                    <p class="text-gray-700 mb-3">
+                        Un módulo (en este punto del curso, una función) debe <strong>hacer una sola cosa, hacerla bien y no hacer nada más</strong>.
+                    </p>
+                    <p class="text-gray-700">
+                        Separar el cálculo matemático de la manipulación de la interfaz. Si la lógica matemática falla, no tienes que revisar el código de impresión visual.
+                    </p>
+                </div>
+
+                <!-- Pilar 2 -->
+                <div class="bg-white p-5 rounded-lg shadow-sm mb-6">
+                    <h3 class="text-xl font-semibold text-cyan-700 mb-3">
+                        2️⃣ Bajo Acoplamiento y Alta Cohesión
+                    </h3>
+                    <div class="space-y-3">
+                        <div>
+                            <h4 class="font-semibold text-gray-800"> Acoplamiento Bajo (Lo ideal):</h4>
+                            <p class="text-gray-700">
+                                Qué tan dependiente es un módulo de otro. Si modificas la función <code class="bg-gray-200 px-2 py-1 rounded text-sm">calcularImpuesto</code>, la función <code class="bg-gray-200 px-2 py-1 rounded text-sm">generarFactura</code> no debería romperse. Para lograr esto, las funciones deben comunicarse estrictamente a través de parámetros y retornos, evitando usar variables globales.
+                            </p>
+                        </div>
+                        <div>
+                            <h4 class="font-semibold text-gray-800"> Cohesión Alta (Lo ideal):</h4>
+                            <p class="text-gray-700">
+                                Qué tan relacionados están los elementos dentro de un mismo módulo. Todo el código dentro de <code class="bg-gray-200 px-2 py-1 rounded text-sm">validarUsuario()</code> debe tratar exclusivamente sobre credenciales y permisos, no sobre la conexión a la base de datos de productos.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Pilar 3 -->
+                <div class="bg-white p-5 rounded-lg shadow-sm mb-6">
+                    <h3 class="text-xl font-semibold text-cyan-700 mb-3">
+                        3️⃣ Funciones Puras vs. Efectos Secundarios (Side Effects)
+                    </h3>
+                    <p class="text-gray-700 mb-3">
+                        Para que un módulo sea predecible y fácil de probar, debe tender a ser una <strong>"función pura"</strong>.
+                    </p>
+                    <ul class="list-disc list-inside text-gray-700 mb-3 space-y-2 ml-4">
+                        <li>
+                            <strong>Función Pura:</strong> Dado el mismo input (parámetro), siempre devolverá exactamente el mismo output (retorno), sin modificar nada fuera de su propio entorno.
+                        </li>
+                        <li>
+                            <strong>Efecto Secundario (Side Effect):</strong> Cuando una función modifica una variable global, cambia algo en el DOM (HTML) o escribe en una base de datos.
+                        </li>
+                        <li>
+                            <strong>Regla de diseño:</strong> Aísla los efectos secundarios. Ten funciones puras para la lógica, y funciones impuras separadas para alterar el sistema.
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- Pilar 4 -->
+                <div class="bg-white p-5 rounded-lg shadow-sm mb-6">
+                    <h3 class="text-xl font-semibold text-cyan-700 mb-3">
+                        4️⃣ Encapsulamiento (El concepto de Caja Negra)
+                    </h3>
+                    <p class="text-gray-700 mb-3">
+                        El desarrollador que utiliza un módulo no necesita saber <em>cómo</em> está programado por dentro; solo necesita saber qué datos requiere (parámetros) y qué le devolverá (return).
+                    </p>
+                    <div class="bg-red-50 border-l-4 border-red-500 p-4 rounded">
+                        <p class="text-gray-800">
+                             Si necesitas explicar cómo funciona el interior de tu función para que otro la pueda usar, tu encapsulamiento falló o tu código es ilegible.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Separación Lógica vs Física -->
+                <div class="bg-gradient-to-r from-yellow-50 to-amber-50 p-5 rounded-lg border-l-4 border-yellow-500 mb-6">
+                    <h3 class="text-xl font-semibold text-gray-800 mb-3">
+                         Separación Lógica vs. Separación Física
+                    </h3>
+                    <p class="text-gray-700 mb-4">
+                        Tenemos la <strong>separación lógica</strong> dentro del mismo archivo de js o podemos realizar la <strong>separación física</strong> y compartimentar en diferentes archivos.
+                    </p>
+                    <p class="text-gray-700 mb-4">
+                        Para la separación física necesitamos usar como herramienta principal los <strong>Módulos de ES6 (import / export)</strong>, archivos y directorios.
+                    </p>
+                    <pre class="bg-gray-900 text-gray-100 p-4 rounded-lg overflow-x-auto mb-4"><code>import { calcularImpuesto } from './matematicas.js';</code></pre>
+
+                    <div class="bg-red-100 border border-red-300 p-4 rounded-lg mb-4">
+                        <h4 class="font-bold text-red-800 mb-2">❌ El Falso Modular (Física sin Lógica):</h4>
+                        <p class="text-gray-800">
+                            Si un estudiante tiene un archivo de 1,000 líneas de código espagueti y simplemente lo corta con unas tijeras en 4 archivos de 250 líneas unidos por import/export, no ha modularizado nada. Simplemente ha creado un <strong>"monolito distribuido"</strong>. El código sigue acoplado, sigue siendo imposible de testear y ahora es peor porque tienes que saltar entre 4 archivos para encontrar un error.
+                        </p>
+                    </div>
+
+                    <div class="bg-green-100 border border-green-300 p-4 rounded-lg">
+                        <h4 class="font-bold text-green-800 mb-2">✅ El Orden Correcto:</h4>
+                        <p class="text-gray-800">
+                            La <strong>separación lógica</strong> es obligatoria e innegociable desde el día 1 (separar en funciones puras e impuras). La <strong>separación física</strong> es una consecuencia que se aplica cuando el archivo crece demasiado o cuando una función lógica necesita ser reutilizada por otro script diferente.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Módulos ES6 -->
+                <div class="bg-white p-5 rounded-lg shadow-sm mb-6">
+                    <h3 class="text-xl font-semibold text-cyan-700 mb-3">
+                         Módulos ES6: type="module"
+                    </h3>
+                    <p class="text-gray-700 mb-4">
+                        Para evitar problemas de <strong>CORS</strong>, por motivos de seguridad, los navegadores bloquean el uso de import/export a menos que le digas explícitamente al HTML que el archivo JavaScript es un Módulo.
+                    </p>
+                    <pre class="bg-gray-900 text-gray-100 p-4 rounded-lg overflow-x-auto mb-4"><code>&lt;script type="module" src="main.js"&gt;&lt;/script&gt;</code></pre>
+                    <p class="text-gray-700">
+                        Al colocar <code class="bg-gray-200 px-2 py-1 rounded text-sm">type="module"</code>, el navegador entiende que <code class="bg-gray-200 px-2 py-1 rounded text-sm">main.js</code> es el punto de entrada y que, de forma autónoma, irá a buscar y descargar <code class="bg-gray-200 px-2 py-1 rounded text-sm">otros.js</code> por detrás sin necesidad de que nosotros llenemos el HTML de múltiples etiquetas <code class="bg-gray-200 px-2 py-1 rounded text-sm">&lt;script&gt;</code>.
+                    </p>
+                </div>
+
+                <!-- Tipos de Export -->
+                <div class="bg-white p-5 rounded-lg shadow-sm">
+                    <h3 class="text-xl font-semibold text-cyan-700 mb-3">
+                         Named Exports vs Default Exports
+                    </h3>
+                    <p class="text-gray-700 mb-4">
+                        Existen dos formas de exportar código: <strong>Named Exports</strong> (Exportaciones Nombradas) y <strong>Default Exports</strong> (Exportación por Defecto).
+                    </p>
+                    
+                    <div class="space-y-4">
+                        <div class="bg-blue-50 p-4 rounded-lg border-l-4 border-blue-500">
+                            <h4 class="font-semibold text-gray-800 mb-2"> Named Exports:</h4>
+                            <p class="text-gray-700 mb-2">
+                                <strong>Regla estricta:</strong> Al importar, DEBES usar exactamente el mismo nombre que se usó al exportar, y DEBES usar llaves <code class="bg-gray-200 px-2 py-1 rounded text-sm">{}</code>.
+                            </p>
+                        </div>
+
+                        <div class="bg-purple-50 p-4 rounded-lg border-l-4 border-purple-500">
+                            <h4 class="font-semibold text-gray-800 mb-2"> Default Exports:</h4>
+                            <p class="text-gray-700">
+                                <strong>Regla estricta:</strong> Solo puede haber UN ÚNICO <code class="bg-gray-200 px-2 py-1 rounded text-sm">export default</code> por archivo.
+                            </p>
+                        </div>
+
+                        <div class="bg-gray-50 p-4 rounded-lg">
+                            <p class="text-gray-700">
+                             <strong>Nota:</strong> En un solo archivo podemos tener ambos tipos de exports.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section class="mb-8 bg-gradient-to-br from-red-50 to-rose-50 p-6 md:p-8 rounded-xl shadow-md border-l-4 border-red-500 hover:shadow-lg transition-shadow duration-300">
+                <h2 class="text-2xl font-bold text-gray-800 mb-6">Ejercicio Independiente</h2>
+                
+                <div class="bg-white p-6 rounded-lg shadow-lg border-t-4 border-red-400">
+                    <h3 class="text-2xl font-bold text-red-700 mb-4">
+                        Misión: El Verificador de Contraseñas Funcional
+                    </h3>
+                    
+                    <p class="text-gray-700 mb-6">
+                        Vamos a crear una función que valide si una contraseña es "fuerte" o no, y que nos devuelva un valor que podamos usar.
+                    </p>
+
+                    <h4 class="text-lg font-semibold text-gray-800 mb-4">Instrucciones:</h4>
+                    
+                    <ol class="list-decimal list-inside text-gray-700 mb-6 space-y-3 ml-4">
+                        <li>
+                            Crea una función llamada <code class="bg-gray-200 px-2 py-1 rounded text-sm">validarContrasena</code>
+                        </li>
+                        <li>
+                            La función debe aceptar un parámetro: <code class="bg-gray-200 px-2 py-1 rounded text-sm">contrasena</code>.
+                        </li>
+                        <li>
+                            Dentro de la función, usarás los condicionales (<code class="bg-gray-200 px-2 py-1 rounded text-sm">if...else if...else</code>) para implementar las siguientes reglas:
+                            <ul class="list-disc list-inside ml-6 mt-2 space-y-2">
+                                <li>
+                                    <strong>SI</strong> la contraseña tiene menos de 8 caracteres (<code class="bg-gray-200 px-2 py-1 rounded text-sm">contrasena.length < 8</code>), la función debe <code class="bg-gray-200 px-2 py-1 rounded text-sm">return</code> el string <code class="bg-gray-200 px-2 py-1 rounded text-sm">"Error: Contraseña demasiado corta."</code>.
+                                </li>
+                                <li>
+                                    <strong>SI NO, PERO SI</strong> la contraseña es exactamente <code class="bg-gray-200 px-2 py-1 rounded text-sm">"12345678"</code>, la función debe <code class="bg-gray-200 px-2 py-1 rounded text-sm">return</code> el string <code class="bg-gray-200 px-2 py-1 rounded text-sm">"Error: Contraseña insegura."</code>.
+                                </li>
+                                <li>
+                                    <strong>SI NO</strong> (para cualquier otro caso), la función debe <code class="bg-gray-200 px-2 py-1 rounded text-sm">return</code> el string <code class="bg-gray-200 px-2 py-1 rounded text-sm">"Contraseña segura. ¡Buen trabajo!"</code>.
+                                </li>
+                            </ul>
+                        </li>
+                        <li>
+                            <strong>Prueba tu función:</strong> Llama a la función varias veces con diferentes contraseñas y guarda el resultado en variables.
+                            <ul class="list-disc list-inside ml-6 mt-2">
+                                <li><code class="bg-gray-200 px-2 py-1 rounded text-sm">let resultado1 = validarContrasena("123");</code></li>
+                                <li><code class="bg-gray-200 px-2 py-1 rounded text-sm">let resultado2 = validarContrasena("12345678");</code></li>
+                                <li><code class="bg-gray-200 px-2 py-1 rounded text-sm">let resultado3 = validarContrasena("passwordseguro123");</code></li>
+                            </ul>
+                        </li>
+                        <li>
+                            Muestra los resultados en la consola.
+                        </li>
+                    </ol>
+
+                    <div class="bg-blue-50 border-l-4 border-blue-500 p-5 rounded-lg">
+                        <h4 class="text-lg font-semibold text-blue-900 mb-3">Criterios de Logro Esperados:</h4>
+                        <ul class="list-disc list-inside text-gray-800 space-y-2 ml-4">
+                            <li>
+                                La función <code class="bg-white px-2 py-1 rounded text-sm">validarContrasena</code> está correctamente declarada y acepta un parámetro.
+                            </li>
+                            <li>
+                                La función utiliza <code class="bg-white px-2 py-1 rounded text-sm">return</code> en todos los caminos lógicos (en el <code class="bg-white px-2 py-1 rounded text-sm">if</code>, <code class="bg-white px-2 py-1 rounded text-sm">else if</code> y <code class="bg-white px-2 py-1 rounded text-sm">else</code>).
+                            </li>
+                            <li>
+                                El código <strong>no usa</strong> <code class="bg-white px-2 py-1 rounded text-sm">console.log</code> dentro de la función, sino que retorna los valores.
+                            </li>
+                            <li>
+                                Las llamadas a la función fuera de ella capturan el valor retornado y lo imprimen.
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </section>
+
+            <section class="mb-8 bg-gradient-to-br from-indigo-50 to-blue-50 p-6 md:p-8 rounded-xl shadow-md border-l-4 border-indigo-500 hover:shadow-lg transition-shadow duration-300">
+                <h2 class="text-2xl font-bold text-gray-800 mb-6">¿Debería Saber Algo Más?</h2>
+                
+                <p class="text-gray-700 mb-6">
+                    Hemos aprendido la "declaración de función" clásica (<code class="bg-gray-200 px-2 py-1 rounded text-sm">function miFuncion() {}</code>). Esta es la base. El siguiente nivel de maestría en funciones incluye entender cómo JavaScript las trata.
+                </p>
+
+                <div class="space-y-6">
+                    <!-- Concepto 1 -->
+                    <div class="bg-white p-6 rounded-lg shadow-sm">
+                        <h3 class="text-xl font-semibold text-indigo-700 mb-4">
+                            1️⃣ Las Funciones son "Ciudadanos de Primera Clase"
+                        </h3>
+                        <p class="text-gray-700 mb-4">
+                            Esto significa que, en JavaScript, una función es solo otro tipo de dato, ¡igual que un <code class="bg-gray-200 px-2 py-1 rounded text-sm">Number</code> o un <code class="bg-gray-200 px-2 py-1 rounded text-sm">String</code>! Puedes hacer con ellas lo mismo que haces con las variables:
+                        </p>
+                        <ul class="list-disc list-inside text-gray-700 space-y-2 ml-4">
+                            <li>
+                                <strong>Asignarlas a variables:</strong> <code class="bg-gray-200 px-2 py-1 rounded text-sm">const miFuncion = function() { ... };</code> (Esto se llama <em>Expresión de Función</em>).
+                            </li>
+                            <li>
+                                <strong>Pasarlas como argumentos a otras funciones:</strong> El callback en <code class="bg-gray-200 px-2 py-1 rounded text-sm">setTimeout</code> o <code class="bg-gray-200 px-2 py-1 rounded text-sm">addEventListener</code>.
+                            </li>
+                            <li>
+                                <strong>Retornarlas desde otras funciones.</strong>
+                            </li>
+                        </ul>
+                    </div>
+
+                    <!-- Concepto 2 -->
+                    <div class="bg-white p-6 rounded-lg shadow-sm">
+                        <h3 class="text-xl font-semibold text-indigo-700 mb-4">
+                            2️⃣ Expresiones de Función vs. Declaraciones
+                        </h3>
+                        <div class="space-y-4">
+                            <div class="bg-green-50 border-l-4 border-green-500 p-4 rounded">
+                                <h4 class="font-semibold text-gray-800 mb-2">
+                                    <code class="bg-white px-2 py-1 rounded text-sm">function saludar() {}</code> (Declaración):
+                                </h4>
+                                <p class="text-gray-700">
+                                    Es "elevada" (<em>hoisted</em>). El navegador la "mueve" al principio de tu código antes de ejecutarlo. Puedes llamarla antes de definirla.
+                                </p>
+                            </div>
+
+                            <div class="bg-blue-50 border-l-4 border-blue-500 p-4 rounded">
+                                <h4 class="font-semibold text-gray-800 mb-2">
+                                    <code class="bg-white px-2 py-1 rounded text-sm">const saludar = function() {};</code> (Expresión):
+                                </h4>
+                                <p class="text-gray-700 mb-2">
+                                    No es "elevada". Se comporta como una variable normal. No puedes usarla antes de declararla (<em>Temporal Dead Zone</em>).
+                                </p>
+                                <div class="bg-yellow-100 border border-yellow-300 p-3 rounded mt-2">
+                                    <p class="text-gray-800">
+                                        ⭐ <strong>Esta es la forma más predecible y recomendada en el código moderno.</strong>
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Concepto 3 -->
+                    <div class="bg-white p-6 rounded-lg shadow-sm">
+                        <h3 class="text-xl font-semibold text-indigo-700 mb-4">
+                            3️⃣ Arrow Functions (Funciones de Flecha) (ES6 - Avanzado)
+                        </h3>
+                        <p class="text-gray-700 mb-4">
+                            Son la sintaxis moderna y corta para escribir expresiones de función. Verás esto en el <strong>99% del código moderno</strong>.
+                        </p>
+                        
+                        <div class="space-y-3">
+                            <div>
+                                <p class="text-gray-700 font-semibold mb-2">Expresión Antigua:</p>
+                                <pre class="bg-gray-900 text-gray-100 p-3 rounded-lg overflow-x-auto"><code>const sumar = function(a, b) { return a + b; };</code></pre>
+                            </div>
+
+                            <div>
+                                <p class="text-gray-700 font-semibold mb-2">Función de Flecha (Arrow Function):</p>
+                                <pre class="bg-gray-900 text-gray-100 p-3 rounded-lg overflow-x-auto"><code>const sumar = (a, b) => a + b;</code></pre>
+                            </div>
+                        </div>
+
+                        <div class="bg-purple-50 border-l-4 border-purple-500 p-4 rounded mt-4">
+                            <p class="text-gray-700">
+                                💡 Es solo <strong>"azúcar sintáctico"</strong> (una forma más corta) para la misma idea. Lo dominarás con la práctica.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+
+
+            <footer class="mt-16 pt-8 border-t border-gray-200 text-center text-sm text-gray-500">
+                <img src="src/logo.png" class="h-8 mx-auto mb-3 opacity-50 grayscale invert">
+
+                <p>Docente Desarrollador: <strong>Santiago Yosa González</strong></p>
+            </footer>
+
+        </div>
+    </main>
+
+    <script>
+        const menuBtn = document.getElementById('menu-btn');
+        const sidebar = document.getElementById('sidebar');
+        const overlay = document.getElementById('overlay');
+        const toggleSidebarBtn = document.getElementById('toggle-sidebar-btn');
+        const mainContent = document.getElementById('main-content');
+        const menuIcon = document.getElementById('menu-icon');
+        const contentContainer = document.getElementById('content-container');
+
+        // Toggle para móvil
+        function toggleMenu() {
+            if (sidebar.classList.contains('-translate-x-full')) {
+                sidebar.classList.remove('-translate-x-full');
+                overlay.classList.remove('hidden');
+            } else {
+                sidebar.classList.add('-translate-x-full');
+                overlay.classList.add('hidden');
+            }
+        }
+
+        // Toggle para desktop
+        function toggleSidebarDesktop() {
+            if (sidebar.classList.contains('sidebar-visible')) {
+                // Ocultar sidebar
+                sidebar.classList.remove('sidebar-visible');
+                sidebar.classList.add('sidebar-hidden');
+                toggleSidebarBtn.classList.remove('btn-with-sidebar');
+                toggleSidebarBtn.classList.add('btn-without-sidebar');
+                // Expandir contenido
+                contentContainer.classList.remove('normal');
+                contentContainer.classList.add('expanded');
+                // Cambiar ícono a flecha derecha (mostrar)
+                menuIcon.innerHTML = '<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 5l7 7-7 7M5 5l7 7-7 7"></path>';
+            } else {
+                // Mostrar sidebar
+                sidebar.classList.remove('sidebar-hidden');
+                sidebar.classList.add('sidebar-visible');
+                toggleSidebarBtn.classList.remove('btn-without-sidebar');
+                toggleSidebarBtn.classList.add('btn-with-sidebar');
+                // Restaurar contenido normal
+                contentContainer.classList.remove('expanded');
+                contentContainer.classList.add('normal');
+                // Cambiar ícono a flechas izquierda (ocultar)
+                menuIcon.innerHTML = '<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 19l-7-7 7-7m8 14l-7-7 7-7"></path>';
+            }
+        }
+
+        menuBtn.addEventListener('click', toggleMenu);
+        overlay.addEventListener('click', toggleMenu);
+        toggleSidebarBtn.addEventListener('click', toggleSidebarDesktop);
+
+        // Función para toggle de la solución
+        function toggleSolution() {
+            const solutionContent = document.getElementById('solutionContent');
+            const toggleIcon = document.getElementById('toggleIcon');
+
+            if (solutionContent.classList.contains('hidden')) {
+                solutionContent.classList.remove('hidden');
+                toggleIcon.textContent = '▲';
+            } else {
+                solutionContent.classList.add('hidden');
+                toggleIcon.textContent = '▼';
+            }
+        }
+
+        // Función para toggle de la solución B
+        function toggleSolutionB() {
+            const solutionContentB = document.getElementById('solutionContentB');
+            const toggleIconB = document.getElementById('toggleIconB');
+
+            if (solutionContentB.classList.contains('hidden')) {
+                solutionContentB.classList.remove('hidden');
+                toggleIconB.textContent = '▲';
+            } else {
+                solutionContentB.classList.add('hidden');
+                toggleIconB.textContent = '▼';
+            }
+        }
+
+        // Función para toggle de la solución FizzBuzz
+        function toggleSolutionFizzBuzz() {
+            const solutionContentFizzBuzz = document.getElementById('solutionContentFizzBuzz');
+            const toggleIconFizzBuzz = document.getElementById('toggleIconFizzBuzz');
+
+            if (solutionContentFizzBuzz.classList.contains('hidden')) {
+                solutionContentFizzBuzz.classList.remove('hidden');
+                toggleIconFizzBuzz.textContent = '▲';
+            } else {
+                solutionContentFizzBuzz.classList.add('hidden');
+                toggleIconFizzBuzz.textContent = '▼';
+            }
+        }
+    </script>
+</body>
+
+</html>
