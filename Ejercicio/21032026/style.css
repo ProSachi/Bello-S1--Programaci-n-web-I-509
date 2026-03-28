@@ -1,0 +1,34 @@
+:root {
+    --color-fondo: #df1919;
+    --color-texto: #1d1d1d;
+    --color-titulo: #0b57d0;
+    --color-parrafo: #6b3f12;
+    --color-clase-parrafo: #2f8f2f;
+}
+
+body {
+    background-color: var(--color-fondo);
+    color: var(--color-texto);
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+#titulo-principal {
+    color: var(--color-titulo);
+}
+
+p {
+    color: var(--color-parrafo);
+}
+
+.parrafo {
+    color: var(--color-clase-parrafo);
+}
+
+/* Modo oscuro: se activa con classList.toggle('clase-alternante') */
+body.clase-alternante {
+    --color-fondo: #111827;
+    --color-texto: #e5e7eb;
+    --color-titulo: #93c5fd;
+    --color-parrafo: #fcd34d;
+    --color-clase-parrafo: #86efac;
+}
