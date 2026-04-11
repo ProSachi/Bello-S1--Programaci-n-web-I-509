@@ -1,0 +1,140 @@
+:root {
+    --bg: #f6f8fb;
+    --surface: #ffffff;
+    --surface-2: #eef2f7;
+    --text: #17212f;
+    --text-muted: #4a5a71;
+    --primary: #0b6aa8;
+    --primary-strong: #085582;
+    --border: #d8e0ea;
+    --shadow: 0 8px 24px rgba(20, 40, 70, 0.08);
+}
+
+@media (prefers-color-scheme: dark) {
+    :root {
+        --bg: #0f141b;
+        --surface: #1a222c;
+        --surface-2: #242f3c;
+        --text: #ebf1f8;
+        --text-muted: #b4c2d6;
+        --primary: #56b1e6;
+        --primary-strong: #79c5ef;
+        --border: #334254;
+        --shadow: 0 10px 28px rgba(0, 0, 0, 0.35);
+    }
+}
+
+/* Opcional: forzar tema con class="theme-light" o class="theme-dark" en body */
+body.theme-light {
+    --bg: #f6f8fb;
+    --surface: #ffffff;
+    --surface-2: #eef2f7;
+    --text: #17212f;
+    --text-muted: #4a5a71;
+    --primary: #0b6aa8;
+    --primary-strong: #085582;
+    --border: #d8e0ea;
+    --shadow: 0 8px 24px rgba(20, 40, 70, 0.08);
+}
+
+body.theme-dark {
+    --bg: #0f141b;
+    --surface: #1a222c;
+    --surface-2: #242f3c;
+    --text: #ebf1f8;
+    --text-muted: #b4c2d6;
+    --primary: #56b1e6;
+    --primary-strong: #79c5ef;
+    --border: #334254;
+    --shadow: 0 10px 28px rgba(0, 0, 0, 0.35);
+}
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    padding: 32px;
+    font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+    background: linear-gradient(170deg, var(--bg), color-mix(in srgb, var(--bg) 80%, var(--surface) 20%));
+    color: var(--text);
+    transition: background-color 0.25s ease, color 0.25s ease;
+}
+
+.formulario {
+    max-width: 520px;
+    margin: 0 auto 24px;
+    padding: 20px;
+    border: 1px solid var(--border);
+    border-radius: 14px;
+    background-color: var(--surface);
+    box-shadow: var(--shadow);
+}
+
+.formulariofeo{
+    background-color: #56b1e6;
+}
+
+.paralabel {
+    display: inline-block;
+    min-width: 70px;
+    margin: 10px 0 6px;
+    color: var(--text-muted);
+    font-weight: 600;
+}
+
+input[type="text"],
+input[type="email"] {
+    width: 100%;
+    padding: 10px 12px;
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    background-color: var(--surface-2);
+    color: var(--text);
+    margin-bottom: 10px;
+}
+
+input[type="text"]:focus,
+input[type="email"]:focus {
+    outline: 2px solid color-mix(in srgb, var(--primary) 45%, transparent);
+    border-color: var(--primary);
+}
+
+input[type="submit"] {
+    margin-top: 8px;
+    padding: 10px 16px;
+    border: none;
+    border-radius: 10px;
+    background: var(--primary);
+    color: #ffffff;
+    font-weight: 700;
+    cursor: pointer;
+    transition: background-color 0.2s ease, transform 0.2s ease;
+}
+
+input[type="submit"]:hover {
+    background: var(--primary-strong);
+    transform: translateY(-1px);
+}
+
+#Noticias {
+    max-width: 520px;
+    margin: 0 auto;
+    display: grid;
+    gap: 10px;
+}
+
+#Noticias div {
+    padding: 14px;
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    background-color: var(--surface);
+    box-shadow: var(--shadow);
+}
+
+#Noticias p {
+    margin: 0;
+}
+
+
