@@ -1,0 +1,33 @@
+.activo{
+    background-color: aquamarine;
+    color: blueviolet;
+}
+
+.Inactivo{
+    background-color:chocolate;
+    color: blueviolet;
+}
+
+.Inactivo2{
+    background-color:rgb(38, 23, 136);
+    color: rgb(226, 43, 43);
+}
+
+.tarjeta{
+    background-color: aqua;
+    background-image: radial-gradient(circle, #a1c4fd, #c2fbc5);
+}
+
+.oculto{
+    background-color: rgb(128, 255, 0);
+    background-image: radial-gradient(circle, #c9fda1, #fbd7c2);
+    display: none;
+}
+
+.contador{
+    background-color: cadetblue;
+    height: 30px;
+    width: 30px;
+}
+
+
