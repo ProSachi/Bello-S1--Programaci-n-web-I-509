@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Formulario de Registro</title>
+    <link rel="stylesheet" href="style.css">
+
+</head>
+
+<body>
+    <main class="registro">
+
+        <div class="producto-card">
+            <h4>Teclado Mecánico</h4>
+
+            <div class="controles-cantidad">
+                <button class="btn-restar">-</button>
+                <span class="numero-cantidad">1</span>
+                <button class="btn-sumar">+</button>
+            </div>
+        </div>
+
+        <div class="producto-card">
+            <h4>Mouse Gamer</h4>
+
+            <div class="controles-cantidad">
+                <button class="btn-restar">-</button>
+                <span class="numero-cantidad">1</span>
+                <button class="btn-sumar">+</button>
+            </div>
+        </div>
+
+
+
+
+        <h1>Registro de Usuario</h1>
+        <p>Completa los datos para crear tu cuenta.</p>
+
+        <form action="index.html" method="post" id="formulario">
+            <div class="fila">
+                <div class="campo">
+                    <label for="nombre">Nombre</label>
+                    <input type="text" id="nombre" name="nombre" placeholder="Ej: Ana" required>
+                    <span class="alerta-error"></span>
+                </div>
+
+                <div class="campo">
+                    <label for="apellido">Apellido</label>
+                    <input type="text" id="apellido" name="apellido" placeholder="Ej: Gómez" required>
+                </div>
+            </div>
+
+            <div class="campo">
+                <label for="correo">Correo electrónico</label>
+                <input type="email" id="correo" name="correo" placeholder="ejemplo@correo.com" required>
+            </div>
+
+            <div class="fila">
+                <div class="campo">
+                    <label for="clave">Contraseña</label>
+                    <input type="password" id="clave" name="clave" minlength="8" placeholder="Mínimo 8 caracteres"
+                        required>
+                </div>
+
+                <div class="campo">
+                    <label for="confirmar">Confirmar contraseña</label>
+                    <input type="password" id="confirmar" name="confirmar" minlength="8"
+                        placeholder="Repite la contraseña" required>
+                </div>
+            </div>
+
+            <div class="campo">
+                <label for="fecha">Fecha de nacimiento</label>
+                <input type="date" id="fecha" name="fecha" required>
+            </div>
+
+            <div class="campo">
+                <label for="pais">País</label>
+                <select id="pais" name="pais" required>
+                    <option value="" selected disabled>Selecciona un país</option>
+                    <option value="co">Colombia</option>
+                    <option value="mx">México</option>
+                    <option value="ar">Argentina</option>
+                    <option value="pe">Perú</option>
+                    <option value="cl">Chile</option>
+                    <option value="otro">Otro</option>
+                </select>
+            </div>
+
+            <label class="check" for="terminos">
+                <input type="checkbox" id="terminos" name="terminos" required>
+                Acepto términos y condiciones.
+            </label>
+
+            <button type="submit">Crear cuenta</button>
+        </form>
+    </main>
+
+    <script type="module" src="main.js"></script>
+</body>
+
+</html>
