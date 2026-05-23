@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard Demo</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <main class="app dashboard-page">
+        <header class="dashboard-head">
+            <div>
+                <p class="hero-kicker">Vista de relleno</p>
+                <h1>Dashboard de simulacion</h1>
+                <p class="subtitulo">Datos mock para presentar una interfaz tipo sistema web</p>
+            </div>
+            <a class="btn btn-ghost" href="index.html">Regresar al index</a>
+        </header>
+
+        <section class="stats-grid" id="stats-grid" aria-label="Metricas del dia"></section>
+
+        <section class="dashboard-grid">
+            <article class="panel">
+                <h2>Actividad reciente</h2>
+                <ul class="activity-list" id="activity-list"></ul>
+            </article>
+
+            <article class="panel">
+                <h2>Tareas del dia</h2>
+                <ul class="task-list">
+                    <li>Validar consistencia de nombres en usuarios.</li>
+                    <li>Revisar ultimas 10 ventas con monto alto.</li>
+                    <li>Comparar cursos activos vs cursos archivados.</li>
+                    <li>Preparar reporte para cierre semanal.</li>
+                </ul>
+            </article>
+        </section>
+
+        <section class="panel table-panel">
+            <h2>Ventas recientes</h2>
+            <div class="table-wrap">
+                <table class="dash-table">
+                    <thead>
+                        <tr>
+                            <th>Cliente</th>
+                            <th>Canal</th>
+                            <th>Estado</th>
+                            <th>Valor</th>
+                        </tr>
+                    </thead>
+                    <tbody id="sales-body"></tbody>
+                </table>
+            </div>
+        </section>
+    </main>
+
+    <script type="module" src="./dashboard.js"></script>
+</body>
+
+</html>
